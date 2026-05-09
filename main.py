@@ -7,7 +7,7 @@ from aiogram.utils.deep_linking import create_start_link, decode_payload
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatMemberUpdated
 
 
-API_TOKEN = "8602948149:AAHGCR5a-sCgs3wKo5d6FYUc_ZffzxQO4Ww"
+API_TOKEN = "8602948149:AAFlNgu__JQdJ2HztneBznNKRNCtd0BI2FM"
 
 CHANNEL_ID = -1002973042972
 MAIN_CHANNEL_LINK = "https://t.me/+yKejphFq__MwOGUy"
