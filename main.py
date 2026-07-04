@@ -189,40 +189,13 @@ async def stats(message: types.Message):
 
     await message.answer(f"📊 Siz jami {count} ta odam taklif qildingiz.")
 
-# ТОЧКА ВХОДА
-import asyncio
-import os
-from aiohttp import web
-
-# Хэндлер для Render, чтобы он видел открытый порт
-async def handle_ping(request):
-    return web.Response(text="Bot is running!")
-
 async def main():
     init_db()
-    print("Bot ishga tushdi...") # Твой принт для логов
-
-    # Настраиваем веб-сервер aiohttp
-    app = web.Application()
-    app.router.add_get("/", handle_ping)
-    
-    runner = web.AppRunner(app)
-    await runner.setup()
-    
-    # Берем порт, который требует Render
-    port = int(os.getenv("PORT", 8080))
-    site = web.TCPSite(runner, "0.0.0.0", port)
-    await site.start()
-    print(f"Web server started on port {port}")
-
-    # Запускаем бота (polling) ПОСЛЕ старта веб-сервера
-    try:
-        await dp.start_polling(
-            bot, 
-            allowed_updates=["message", "callback_query", "chat_member"]
-        )
-    finally:
-        await bot.session.close()
+    print("Бот успешно запущен...")
+    await dp.start_polling(
+        bot,
+        allowed_updates=["message", "callback_query", "chat_member"]
+    )
 
 if __name__ == "__main__":
     asyncio.run(main())
